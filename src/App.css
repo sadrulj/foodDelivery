@@ -1,38 +1,792 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: #faf9fb;
+  overflow-x: hidden;
+}
+.App::-webkit-scrollbar {
+  display: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hearder Css */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px;
+  height: 60px;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  min-width: 40px;
+  width: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inputBox {
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 8px 15px;
+  width: 120px;
+}
+
+.inputBox .searchIcon {
+  color: #787a84;
+  font-size: 20px;
+}
+
+.inputBox input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #787a84;
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
+
+.profileContainer .imgBox {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 100vw;
+  background: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileContainer .userName {
+  font-size: 16px;
+  margin-left: 8px;
+  font-weight: 500;
+  align-items: center;
+  display: none;
+}
+
+.toggleMenu {
+  transform: rotate(90deg);
+}
+
+.toggleMenu .toggleIcon {
+  color: #373848;
+  font-size: 30px;
+}
+
+/* Header css ends */
+
+/* Main css starts */
+main {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}
+
+.mainContainer {
+  width: 100%;
+  height: auto;
+  background: #faf9fb;
+  padding: 10px;
+  padding-bottom: 100px;
+}
+
+.banner {
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+  background: url("https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fbanner.png?alt=media&token=7e244d84-8821-477d-b273-4c9381a474fb")
+    no-repeat center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.bannerContent {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.bannerContent h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.bannerContent p {
+  font-size: 14px;
+  width: 200px;
+  color: #989594;
+  margin: 5px 0;
+}
+
+.bannerContent p span {
+  color: #f8901c;
+  font-weight: 600;
+}
+
+.bannerContent a {
+  background: #f8901c;
+  padding: 5px 15px;
+  border-radius: 100vw;
+  color: #faf9fb;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bannerContent a:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+}
+
+.deliveryPic {
+  position: absolute;
+  right: -60px;
+  bottom: -10px;
+  width: 240px;
+}
+
+/* dish container */
+.dishContainer {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.menuCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.viewAll {
+  display: flex;
+  align-items: center;
+}
+
+.viewAll h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+
+.viewAll p {
+  font-size: 16px;
+  color: #f8901c;
+  font-weight: 400;
+}
+
+.viewAll i {
+  background: #f8901c;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.viewAll i .MuiSvgIcon-root {
+  font-size: 16px;
+  color: #faf9fb;
+}
+
+/* Row Container start */
+.subMenuContianer,
+.viewAll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subMenuContianer h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2a2b3c;
+}
+
+.subMenuContianer .viewAll p {
+  font-size: 12px;
+  color: #f8901c;
+  font-weight: 400;
+}
+
+.subMenuContianer .viewAll i {
+  background: #f8901c;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.subMenuContianer .viewAll i .MuiSvgIcon-root {
+  font-size: 16px !important;
+  color: #faf9fb;
+}
+
+.rowContainer {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.rowContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.rowMenuCard {
+  width: 80px;
+  min-width: 80px;
+  height: 100px;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.rowMenuCard:hover,
+.rowMenuCard.active {
+  background: #f8901c;
+}
+
+.rowMenuCard .imgBox {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 100vw;
+  background: #f8901c;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.rowMenuCard:hover .imgBox,
+.rowMenuCard.active .imgBox {
+  background: #fff;
+}
+
+.rowMenuCard .imgBox img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.rowMenuCard:hover .imgBox img,
+.rowMenuCard.active .imgBox img {
+  width: 80%;
+  height: 80%;
+  transition: 0.5s;
+}
+
+.rowMenuCard h3 {
+  color: #f8901c;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.rowMenuCard:hover h3,
+.rowMenuCard.active h3 {
+  color: #faf9fb;
+}
+
+.rowMenuCard .loadMenu {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 5px;
+  background: #f8901c;
+  transition: 0.5s;
+}
+
+.rowMenuCard:hover .loadMenu,
+.rowMenuCard.active .loadMenu {
+  background: #fff;
+}
+
+.rowMenuCard .loadMenu .MuiSvgIcon-root {
+  font-size: 18px;
+  color: #faf9fb;
+}
+
+.rowMenuCard:hover .loadMenu .MuiSvgIcon-root,
+.rowMenuCard.active .loadMenu .MuiSvgIcon-root {
+  color: #f8901c;
+}
+/* Row Container Ends */
+
+/* Dish Item Container start */
+.dishItemContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px 0px;
+}
+
+.isfavourite {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  transition: 0.5s;
+}
+
+.isfavourite .MuiSvgIcon-root {
+  font-size: 18px;
+  color: #ff000088;
+}
+
+.isfavourite.active .MuiSvgIcon-root {
+  color: #ff0000;
+  filter: drop-shadow(0px 0px 8px #ff0000);
+}
+
+.itemCard {
+  width: 160px;
+  height: 180px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.itemCard .imgBox {
+  width: 100px;
+  height: 100px;
+  border-radius: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: absolute;
+  top: -10px;
+}
+
+.itemCard .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.itemImg {
+  position: absolute;
+  top: 0;
+  width: 60%;
+}
+.itemContent {
+  background: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  padding: 10px;
+  padding-top: 50px;
+  width: 100%;
+}
+
+.itemContent .itemName {
+  font-size: 16px;
+}
+
+.itemContent .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemContent .bottom .rating .MuiSvgIcon-root {
+  font-size: 16px;
+}
+
+.orange {
+  color: #f8901c !important;
+}
+
+.gray {
+  color: #373848 !important;
+}
+
+.itemContent .bottom .price {
+  font-size: 16px;
+}
+
+.itemContent .bottom .price span {
+  color: #f8901c;
+  font-size: 12px;
+}
+
+.itemContent .addtoCart {
+  background: #f8901c;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.itemContent .addtoCart .MuiSvgIcon-root {
+  color: #faf9fb;
+  font-size: 16px;
+}
+/* Dish Item Container Ends */
+
+/* Right Menu container starts*/
+.rightMenu {
+  width: 320px;
+  height: calc(100% - 60px);
+  background: #fff;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  z-index: 105;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 10px;
+  transform: translateX(200%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1);
+}
+.rightMenu.active {
+  transform: translateX(0%);
+}
+
+.cartContainer {
+  width: 100%;
+  min-height: 280px;
+  max-height: 300px;
+  margin-top: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.cartContainer::-webkit-scrollbar {
+  display: none;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+.cart .imgBox {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  min-height: 60px;
+  background: #00ffc855;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 5px;
+}
+.cart .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cart .itemSection {
+  margin-left: 10px;
+}
+.cart .itemSection .itemName {
+  font-size: 16px;
+  color: #2a2b3c;
+}
+.cart .itemSection .itemQuantity {
+  font-size: 16px;
+  color: #2a2b3c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+.cart .itemSection .itemQuantity span {
+  color: #f8901c;
+}
+.cart .itemSection .itemQuantity .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 60px;
+}
+.cart .itemSection .itemQuantity .quantity .itemRemove,
+.cart .itemSection .itemQuantity .quantity .itemAdd {
+  color: #2a2b3c;
+  font-size: 24px;
+}
+.cart .itemPrice {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2a2b3c;
+  margin-left: 45px;
+}
+.cart .itemPrice .dolorSign {
+  font-size: 20px;
+  color: #f8901c;
 }
 
-.App-link {
-  color: #61dafb;
+.cart .itemPrice .itemPriceValue {
+  font-size: 24px;
+  color: #373848;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.totalSection {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px;
+  margin: 15px 0px;
+}
+.totalSection h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+.totalSection p {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2a2b3c;
+}
+.totalSection p span {
+  font-size: 20px;
+  color: #f8901c;
+}
+.checkOut {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  background: #f8901c;
+  border-radius: 100vw;
+  color: #faf9fb;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+/* Right Menu container ends */
+
+/* Main css Ends */
+
+/* Footer css Start */
+.bottomMenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background: #d5d5d5;
+  border-radius: 25px 25px 0 0;
+  z-index: 101;
+}
+
+.bottomMenu ul {
+  display: flex;
+}
+
+.bottomMenu ul li {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+}
+
+.bottomMenu ul li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+}
+
+.bottomMenu ul li a .icon {
+  position: relative;
+  display: block;
+  line-height: 70px;
+  text-align: center;
+  transition: 0.5s;
+}
+.bottomMenu ul li a .MuiSvgIcon-root {
+  font-size: 26px;
+  color: #373848;
+}
+
+.bottomMenu ul li.active a .icon {
+  transform: translateY(-26px);
+}
+
+.bottomMenu ul li.active a .icon .MuiSvgIcon-root {
+  color: #faf9fb;
+  transition: 0.5s;
+}
+
+.indicator {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  background: #f8901c;
+  border-radius: 100vw;
+  top: -50%;
+  border: 6px solid #faf9fb;
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border-top-right-radius: 18px;
+  box-shadow: 0px -10px 0 0 #faf9fb;
+}
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  border-top-left-radius: 18px;
+  box-shadow: 0px -10px 0 0 #faf9fb;
+}
+
+.bottomMenu ul li:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(60px * 0));
+}
+.bottomMenu ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(60px * 1));
+}
+.bottomMenu ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(60px * 2));
+}
+.bottomMenu ul li:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(60px * 3));
+}
+.bottomMenu ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(60px * 4));
+}
+.bottomMenu ul li:nth-child(6).active ~ .indicator {
+  transform: translateX(calc(60px * 5));
+}
+/* Footer css Ends */
+
+@media screen and (min-width: 650px) {
+  .rowContainer {
+    justify-content: space-around;
   }
-  to {
-    transform: rotate(360deg);
+  .inputBox {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .toggleMenu {
+    display: none;
+  }
+
+  .profileContainer .userName {
+    display: none;
+  }
+
+  .bottomMenu {
+    left: 21%;
+    width: 40%;
+  }
+
+  .mainContainer {
+    width: calc(100% - 350px);
+    padding: 10px 30px;
+  }
+
+  .banner {
+    height: 160px;
+  }
+
+  .deliveryPic {
+    bottom: -13px;
+    width: 278px;
+  }
+
+  .bannerContent h3 {
+    font-size: 24px;
+  }
+
+  .bannerContent p {
+    font-size: 15px;
+    margin: 12px 0;
+    width: unset;
+  }
+
+  .bannerContent a {
+    font-size: 16px;
+  }
+
+  main {
+    display: flex;
+  }
+
+  .rightMenu {
+    position: fixed;
+    z-index: 1;
+    transform: translateX(0%);
+    top: unset;
+    padding: 20px 15px;
   }
 }
