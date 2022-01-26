@@ -9,9 +9,7 @@ import { useEffect } from "react";
 import { useStateValue } from "../StateProvider";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Login from "./Auth/Login/Login";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -105,9 +103,7 @@ const Header = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={style}>
-              <Login />
-            </Box>
+            <Box sx={style}>{/* <SignIn /> */}</Box>
           </Modal>
         </div>
         <h2 className="userName">sadrul jamil</h2>
