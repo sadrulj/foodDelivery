@@ -120,6 +120,14 @@ main {
   padding: 0 10px;
 }
 
+.deliveryPic {
+  position: absolute;
+  right: -60px;
+  bottom: -10px;
+  width: 240px;
+  margin-right: 45px;
+}
+
 .bannerContent {
   padding: 8px;
   display: flex;
@@ -159,13 +167,6 @@ main {
 .bannerContent a:hover {
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
   transition: 0.5s;
-}
-
-.deliveryPic {
-  position: absolute;
-  right: -60px;
-  bottom: -10px;
-  width: 240px;
 }
 
 /* dish container */
@@ -830,9 +831,10 @@ main {
     height: 160px;
   }
 
-  .deliveryPic {
+  .deliveryPic img {
     bottom: -13px;
     width: 278px;
+    margin-right: 45px;
   }
 
   .bannerContent h3 {
