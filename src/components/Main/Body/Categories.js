@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DishItemContainer from "./Categories/DishItemContainer";
 import MenuContainer from "./Categories/MenuContainer";
 import RowContainer from "./Categories/RowContainer";
-import { MenuItems, Items } from "../../../data";
+import { MenuItems } from "../../../data";
 import { useEffect } from "react";
+import Context from "../../../store/Context";
 
 const Categories = () => {
+  const context = useContext(Context);
   const [isMainData, setMainData] = useState(
-    Items.filter((element) => element.itemId === "buger01")
+    context.items.filter((element) => element.itemId === "buger01")
   );
   const setData = (itemId) => {
-    setMainData(Items.filter((element) => element.itemId === itemId));
+    setMainData(context.items.filter((element) => element.itemId === itemId));
   };
   useEffect(() => {
     const menuCards = document
@@ -21,7 +23,8 @@ const Categories = () => {
       this.classList.add("active");
     }
     menuCards.forEach((n) => n.addEventListener("click", setMenuCardActive));
-  }, [isMainData]);
+    console.log(context);
+  }, [context, isMainData]);
   return (
     <div className="dishContainer">
       <MenuContainer />
@@ -31,11 +34,12 @@ const Categories = () => {
           isMainData.map((data) => (
             <DishItemContainer
               key={data.id}
-              itemId={data.id}
+              id={data.id}
               imgSrc={data.imgSrc}
               name={data.name}
               ratings={data.ratings}
               price={data.price}
+              addItemToCart={context.addItemToCart}
             />
           ))}
       </div>

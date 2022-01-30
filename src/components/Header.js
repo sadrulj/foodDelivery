@@ -6,7 +6,6 @@ import { BarChart, SearchRounded } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Avatar from "@mui/material/Avatar";
 import { useEffect } from "react";
-import { useStateValue } from "../StateProvider";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -49,8 +48,7 @@ function stringAvatar(name) {
   };
 }
 
-const Header = () => {
-  const [{ cart }, dispatch] = useStateValue();
+const Header = ({ carts }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -78,19 +76,12 @@ const Header = () => {
     <header>
       <img
         className="logo"
-        src="https://firebasestorage.googleapis.com/v0/b/fooddelivery-d8524.appspot.com/o/209358347_1195776210871468_764556662967386694_n.jpeg?alt=media&token=5e7031de-0530-4732-a53e-51e5180395d1"
+        src="https://images.contentstack.io/v3/assets/blt8bcfaa71fdb930ca/bltd0bbd06d4192c78c/5f9d0b7f45fa7d72ddd1fa14/F24-26_Burger_Republic_Shop_Logo.png"
         alt=""
       />
       <div className="inputBox">
         <SearchRounded className="searchIcon" />
         <input type="text" placeholder="Search" />
-      </div>
-      <div className="shoppingCart">
-        <IconButton aria-label="cart">
-          <StyledBadge badgeContent={cart ? cart.length : ""} color="secondary">
-            <ShoppingCartIcon />
-          </StyledBadge>
-        </IconButton>
       </div>
       <div className="profileContainer">
         <div className="imgBox">
@@ -106,10 +97,17 @@ const Header = () => {
             <Box sx={style}>{/* <SignIn /> */}</Box>
           </Modal>
         </div>
-        <h2 className="userName">sadrul jamil</h2>
+        <h2 className="userName">Kent Dodds</h2>
       </div>
-      <div className="toggleMenu">
-        <BarChart className="toggleIcon" />
+      <div className="shoppingCart toggleMenu">
+        <IconButton aria-label="cart">
+          <StyledBadge
+            badgeContent={carts ? carts.length : ""}
+            color="secondary"
+          >
+            <ShoppingCartIcon className="toggleIcon" />
+          </StyledBadge>
+        </IconButton>
       </div>
     </header>
   );

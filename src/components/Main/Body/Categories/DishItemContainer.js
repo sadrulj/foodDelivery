@@ -1,35 +1,16 @@
 import { AddRounded, Favorite, StarRounded } from "@mui/icons-material";
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { Items } from "../../../../data";
-import { actionType } from "../../../../reducer";
-import { useStateValue } from "../../../../StateProvider";
-let cartData = [];
 
-const DishItemContainer = ({ itemId, imgSrc, name, price, ratings }) => {
-  const [currentValue, setCurrentValue] = useState(Math.floor(ratings));
+const DishItemContainer = ({ addItemToCart, ...props }) => {
+  const [currentValue, setCurrentValue] = useState(Math.floor(props.ratings));
 
   const [isFavorite, setFavorite] = useState(false);
-
-  const [{}, dispatch] = useStateValue();
-
-  const [isCart, setCart] = useState(null);
-
-  useEffect(() => {
-    if (isCart) {
-      cartData.push(isCart);
-      dispatch({
-        type: actionType.SET_CART,
-        cart: cartData,
-      });
-    }
-  }, [dispatch, isCart]);
 
   const handleClick = (value) => {
     setCurrentValue(value);
   };
   return (
-    <div className="itemCard" id={itemId}>
+    <div className="itemCard" id={props.itemId} key={props.id}>
       <div
         className={`isfavourite ${isFavorite ? "active" : ""}`}
         onClick={() => setFavorite(!isFavorite)}
@@ -37,10 +18,10 @@ const DishItemContainer = ({ itemId, imgSrc, name, price, ratings }) => {
         <Favorite />
       </div>
       <div className="imgBox">
-        <img className="itemImg" src={imgSrc} alt={name} />
+        <img className="itemImg" src={props.imgSrc} alt={props.name} />
       </div>
       <div className="itemContent">
-        <h3 className="itemName">{name}</h3>
+        <h3 className="itemName">{props.name}</h3>
         <div className="bottom">
           <div className="rating">
             {Array.apply(null, { length: 5 }).map((e, i) => (
@@ -54,15 +35,10 @@ const DishItemContainer = ({ itemId, imgSrc, name, price, ratings }) => {
             ))}
             <h3 className="price">
               <span>$ </span>
-              {price}
+              {props.price}
             </h3>
           </div>
-          <i
-            className="addtoCart"
-            onClick={() => {
-              setCart(Items.find((n) => n.id === itemId));
-            }}
-          >
+          <i className="addtoCart" onClick={() => addItemToCart({ ...props })}>
             <AddRounded />
           </i>
         </div>

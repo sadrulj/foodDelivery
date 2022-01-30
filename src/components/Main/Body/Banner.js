@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <div className="banner">
       <div className="bannerContent">
-        <h3>Hello Sadrul</h3>
+        <h3>Hello Kent Dodds</h3>
         <p>
           Get Free discount for every <span>$20</span> purchase
         </p>
